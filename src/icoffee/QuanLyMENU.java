@@ -4,6 +4,9 @@
  */
 package icoffee;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 
@@ -30,6 +33,13 @@ public class QuanLyMENU extends javax.swing.JFrame {
     private void initComponents() {
 
         ThemMonMoi = new javax.swing.JFrame();
+        AddButton = new javax.swing.JButton();
+        tenMonField = new javax.swing.JTextField();
+        giaMonField = new javax.swing.JTextField();
+        tenMon = new javax.swing.JLabel();
+        giaMon = new javax.swing.JLabel();
+        labelThemMon = new javax.swing.JLabel();
+        Huy = new javax.swing.JButton();
         ChonMon = new javax.swing.JComboBox<>();
         Open = new javax.swing.JButton();
         Save = new javax.swing.JButton();
@@ -43,20 +53,72 @@ public class QuanLyMENU extends javax.swing.JFrame {
         Tep = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         tuyChinh = new javax.swing.JMenu();
-        themMenu = new javax.swing.JMenuItem();
+        themMonButton = new javax.swing.JMenuItem();
         xoaMon = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+
+        AddButton.setText("Them");
+
+        tenMonField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        giaMonField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        tenMon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tenMon.setText("Ten Mon");
+
+        giaMon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        giaMon.setText("Gia Mon");
+
+        labelThemMon.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        labelThemMon.setText("Them Mon");
+
+        Huy.setText("Huy");
 
         javax.swing.GroupLayout ThemMonMoiLayout = new javax.swing.GroupLayout(ThemMonMoi.getContentPane());
         ThemMonMoi.getContentPane().setLayout(ThemMonMoiLayout);
         ThemMonMoiLayout.setHorizontalGroup(
             ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThemMonMoiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelThemMon)
+                .addGap(103, 103, 103))
+            .addGroup(ThemMonMoiLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ThemMonMoiLayout.createSequentialGroup()
+                        .addGroup(ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(giaMon)
+                            .addComponent(tenMon))
+                        .addGap(43, 43, 43)
+                        .addGroup(ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(giaMonField)
+                            .addComponent(tenMonField, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)))
+                    .addGroup(ThemMonMoiLayout.createSequentialGroup()
+                        .addComponent(Huy)
+                        .addGap(49, 49, 49)
+                        .addComponent(AddButton)
+                        .addGap(44, 44, 44)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         ThemMonMoiLayout.setVerticalGroup(
             ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThemMonMoiLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(labelThemMon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tenMonField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tenMon))
+                .addGap(18, 18, 18)
+                .addGroup(ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(giaMon)
+                    .addComponent(giaMonField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
+                .addGroup(ThemMonMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddButton)
+                    .addComponent(Huy))
+                .addGap(34, 34, 34))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,13 +153,13 @@ public class QuanLyMENU extends javax.swing.JFrame {
 
         tuyChinh.setText("Tuy Chinh");
 
-        themMenu.setText("Them Mon");
-        themMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                themMenuMouseClicked(evt);
+        themMonButton.setText("Them Mon");
+        themMonButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themMonButtonActionPerformed(evt);
             }
         });
-        tuyChinh.add(themMenu);
+        tuyChinh.add(themMonButton);
 
         xoaMon.setText("Xoa Mon");
         tuyChinh.add(xoaMon);
@@ -169,12 +231,23 @@ public class QuanLyMENU extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void themMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_themMenuMouseClicked
+    private void themMonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themMonButtonActionPerformed
         // TODO add your handling code here:
+        ThemMonMoi.setSize(400, 317);
+        centreWindow(ThemMonMoi);
         ThemMonMoi.setVisible(true);
-    }//GEN-LAST:event_themMenuMouseClicked
+//        setVisible(false);
+    }//GEN-LAST:event_themMonButtonActionPerformed
+
+    public static void centreWindow(Window frame) {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
+    }
 
     /**
      * @param args the command line arguments
@@ -213,22 +286,29 @@ public class QuanLyMENU extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddButton;
     private javax.swing.JComboBox<String> ChonMon;
     private javax.swing.JLabel Gia;
     private javax.swing.JLabel GiaCu;
     private javax.swing.JLabel GiaMoi;
+    private javax.swing.JButton Huy;
     private javax.swing.JButton Open;
     private javax.swing.JButton Save;
     private javax.swing.JMenu Tep;
     private javax.swing.JFrame ThemMonMoi;
     private javax.swing.JTextField giaMoi;
+    private javax.swing.JLabel giaMon;
+    private javax.swing.JTextField giaMonField;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JMenuItem themMenu;
+    private javax.swing.JLabel labelThemMon;
+    private javax.swing.JLabel tenMon;
+    private javax.swing.JTextField tenMonField;
+    private javax.swing.JMenuItem themMonButton;
     private javax.swing.JMenu tuyChinh;
     private javax.swing.JMenuItem xoaMon;
     // End of variables declaration//GEN-END:variables
